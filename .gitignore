@@ -14,4 +14,8 @@ chromedriver.log
 
 # OS files
 .DS_Store
+
 Thumbs.db
+# Local data and logs
+SearchLog/
+*.csv

@@ -1,27 +1,25 @@
-# Naver SEO Automation Helper (Semi-Auto)
+# Naver SEO Pro - Search Automation & Logging
 
 ## 📌 Giới thiệu
-Đây là một công cụ hỗ trợ theo dõi thứ hạng từ khóa trên Naver (Search Engine lớn nhất Hàn Quốc). Dự án được phát triển để giải quyết các tác vụ thủ công lặp đi lặp lại trong quy trình làm báo cáo SEO hàng ngày.
-
-**Hiệu quả thực tế:** Giảm 70% thời gian kiểm tra thủ công cho đội ngũ Digital Marketing.
+Naver SEO Pro là công cụ tự động hóa thao tác kiểm tra thứ hạng từ khóa trên công cụ tìm kiếm Naver. Phiên bản nâng cấp được thiết kế lại logic xử lý tổ hợp dữ liệu và tích hợp hệ thống quản lý nhật ký (log) cục bộ, giúp chuẩn hóa quy trình báo cáo SEO và tối ưu hóa việc đối soát kết quả thủ công.
 
 ## ✨ Tính năng chính
-- **Keyword Generator**: Tự động kết hợp các thành phần (Địa chỉ + Món ăn + Đặc điểm) để tạo danh sách hàng trăm từ khóa SEO chỉ trong 1 lần nhập.
-- **Auto Tab Management**: Tự động mở và quản lý nhiều tab trình duyệt, điều hướng trực tiếp đến trang kết quả tìm kiếm của Naver.
-- **Smart Target Highlighting**: Tự động tìm kiếm thương hiệu mục tiêu trong trang, cuộn đến vị trí đó và đánh dấu (Highlight) để người dùng dễ dàng nhận diện.
-- **Semi-Auto Workflow**: Tự động đóng các tab không tìm thấy kết quả để tiết kiệm tài nguyên máy tính (RAM/CPU) và giữ lại các tab có kết quả để đối soát thủ công.
-- **Pause/Resume/Stop**: Cho phép tạm dừng quá trình quét để kiểm tra và tiếp tục bất cứ lúc nào.
+- **Brute-force Keyword Engine**: Sử dụng thuật toán tích Đề-các (`itertools.product`) để tự động tạo danh sách tổ hợp từ khóa từ 6 biến số đầu vào linh hoạt (Địa chỉ chính, Địa chỉ phụ, Món ăn, và 3 trường Đặc điểm tùy chọn).
+- **Campaign Metadata Tracking**: Cung cấp khu vực khai báo siêu dữ liệu chiến dịch (Target Link, Header Name, Option/Note) để gán nhãn cho từng luồng kiểm tra.
+- **Automated CSV Logging**: Tự động khởi tạo hệ thống thư mục `SearchLog/` theo ngày. Hỗ trợ ghi lại toàn bộ trạng thái hệ thống (Snapshot), nhật ký hoạt động (System Log) và lưu trữ kết quả kết xuất (kể cả kết quả chỉnh sửa thủ công) dưới định dạng tệp `.csv`.
+- **Smart Tab Management & Target Highlighting**: Điều khiển luồng Chrome độc lập, tự động cuộn trang, đóng khung đỏ (highlight) thương hiệu mục tiêu. Hệ thống tự động đóng các tab không chứa kết quả để giải phóng bộ nhớ (RAM).
+- **Asynchronous Execution Control**: Quản lý tiến trình quét bằng đa luồng (Threading), cho phép can thiệp thời gian thực qua các lệnh Start, Pause, Resume và Stop mà không gây đóng băng giao diện người dùng.
 
 ## 🛠 Công nghệ sử dụng
-- **Ngôn ngữ**: Python
-- **Thư viện chính**: 
-  - `Selenium`: Tự động hóa trình duyệt.
-  - `Tkinter`: Xây dựng giao diện người dùng (GUI).
-  - `Threading`: Xử lý đa luồng giúp giao diện không bị treo khi đang quét web.
-  - `WebDriver Manager`: Tự động cập nhật Driver phù hợp với phiên bản Chrome hiện tại.
+- **Ngôn ngữ**: Python 3.x
+- **Thư viện cốt lõi**:
+  - `selenium` & `webdriver-manager`: Tự động hóa thao tác trình duyệt và tự động cập nhật ChromeDriver.
+  - `tkinter`: Khung giao diện đồ họa (GUI).
+  - `threading`: Xử lý tác vụ nền.
+  - `csv`, `os`, `itertools`: Quản lý luồng tệp tin, xử lý tổ hợp mảng và trích xuất dữ liệu (Thư viện tiêu chuẩn của Python).
 
 ## 🚀 Hướng dẫn cài đặt
-1. Tải bộ mã nguồn về máy.
-2. Cài đặt các thư viện cần thiết:
+1. Tải toàn bộ mã nguồn về môi trường cục bộ.
+2. Cài đặt các thư viện phụ thuộc:
    ```bash
    pip install -r requirements.txt
